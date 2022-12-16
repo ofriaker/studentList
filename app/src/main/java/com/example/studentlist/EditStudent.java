@@ -2,6 +2,7 @@ package com.example.studentlist;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -54,16 +55,17 @@ public class EditStudent extends AppCompatActivity {
             Boolean newCb = cbBtn.isChecked();
 
             Student st = new Student(newName, newId, newPhone, newAddress, "", newCb);
-            Model.instance().addStudent(st);
+            Model.instance().updateStudent(pos,st);
             msg.setVisibility(View.VISIBLE);
         });
 
         deleteBtn.setOnClickListener(view -> {
+            msg.setText("Deleted!");
+            msg.setVisibility(View.VISIBLE);
             Model.instance().deleteStudent(pos);
         });
 
         cancelBtn.setOnClickListener(view -> {finish();});
-
-
     }
+
 }

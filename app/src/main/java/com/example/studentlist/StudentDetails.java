@@ -14,6 +14,7 @@ import com.example.studentlist.Model.Student;
 
 public class StudentDetails extends AppCompatActivity {
 
+    boolean editClicked = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +42,7 @@ public class StudentDetails extends AppCompatActivity {
         cbView.setChecked(cb);
 
         editBtn.setOnClickListener(view -> {
+            editClicked = true;
             Intent intent = new Intent(StudentDetails.this, EditStudent.class);
             intent.putExtra("name", name);
             intent.putExtra("id", id);
@@ -50,5 +52,13 @@ public class StudentDetails extends AppCompatActivity {
             intent.putExtra("pos", pos);
             startActivity(intent);
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (editClicked){
+            finish();
+        }
     }
 }

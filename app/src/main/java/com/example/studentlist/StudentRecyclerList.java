@@ -23,6 +23,7 @@ import com.example.studentlist.Model.Student;
 
 public class StudentRecyclerList extends AppCompatActivity {
     List<Student> data;
+    StudentRecyclerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +39,7 @@ public class StudentRecyclerList extends AppCompatActivity {
         list.setHasFixedSize(true);
         list.setLayoutManager(new LinearLayoutManager(this));
 
-        StudentRecyclerAdapter adapter = new StudentRecyclerAdapter();
+        adapter = new StudentRecyclerAdapter();
         list.setAdapter(adapter);
 
         addStudentBtn.setOnClickListener(view -> {
@@ -61,7 +62,6 @@ public class StudentRecyclerList extends AppCompatActivity {
             }
         });
     }
-
 
     class StudentViewHolder extends RecyclerView.ViewHolder{
         TextView name;
@@ -132,6 +132,13 @@ public class StudentRecyclerList extends AppCompatActivity {
         public int getItemCount() {
             return data.size();
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        data = Model.instance().getAllStudents();
+        adapter.notifyDataSetChanged();
     }
 }
 
