@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +38,13 @@ public class StudentRecyclerList extends AppCompatActivity {
             @Override
             public void onItemClick(int pos) {
                 Log.d("tag" , "Row was clicked " + pos);
+                Intent intent = new Intent(StudentRecyclerList.this, StudentDetails.class);
+                Student st = data.get(pos);
+                intent.putExtra("name", st.name);
+                intent.putExtra("id", st.id);
+                intent.putExtra("url", st.avatarURL);
+                intent.putExtra("cb", st.cb);
+                startActivity(intent);
             }
         });
     }

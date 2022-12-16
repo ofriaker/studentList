@@ -1,5 +1,7 @@
 package com.example.studentlist.Model;
 
+import android.os.Parcelable;
+
 public class Student {
 
     public String name;

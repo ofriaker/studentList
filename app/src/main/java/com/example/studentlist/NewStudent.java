@@ -12,7 +12,7 @@ public class NewStudent extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_student);
 
-        EditText nameEt = findViewById(R.id.newStudent_etName);
+        EditText nameEt = findViewById(R.id.studentDetails_stName);
         
     }
 }
