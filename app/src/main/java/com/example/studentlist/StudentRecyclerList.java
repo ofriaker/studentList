@@ -11,6 +11,7 @@ import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import java.util.List;
@@ -26,6 +27,7 @@ public class StudentRecyclerList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_recycler_list);
         data = Model.instance().getAllStudents();
+        Button addStudentBtn = findViewById(R.id.studentRL_newStudent);
 
         RecyclerView list = findViewById(R.id.studentRecyclerList_list);
         list.setHasFixedSize(true);
@@ -34,6 +36,10 @@ public class StudentRecyclerList extends AppCompatActivity {
         StudentRecyclerAdapter adapter = new StudentRecyclerAdapter();
         list.setAdapter(adapter);
 
+        addStudentBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(StudentRecyclerList.this, NewStudent.class);
+            startActivity(intent);
+        });
         adapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(int pos) {
@@ -49,9 +55,12 @@ public class StudentRecyclerList extends AppCompatActivity {
         });
     }
 
+
     class StudentViewHolder extends RecyclerView.ViewHolder{
         TextView name;
         TextView id;
+        TextView phone;
+        TextView address;
         CheckBox cb;
 
         public StudentViewHolder(@NonNull View itemView, OnItemClickListener listener) {
