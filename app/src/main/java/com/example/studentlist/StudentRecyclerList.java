@@ -43,12 +43,16 @@ public class StudentRecyclerList extends AppCompatActivity {
     class StudentViewHolder extends RecyclerView.ViewHolder{
         TextView name;
         TextView id;
+        TextView phone;
+        TextView address;
         CheckBox cb;
 
         public StudentViewHolder(@NonNull View itemView, OnItemClickListener listener) {
             super(itemView);
             name = itemView.findViewById(R.id.studentListRow_name);
             id = itemView.findViewById(R.id.studentListRow_id);
+            phone = itemView.findViewById(R.id.studentListRow_phone);
+            address = itemView.findViewById(R.id.studentListRow_address);
             cb = itemView.findViewById(R.id.studentListRow_cb);
             cb.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -70,6 +74,8 @@ public class StudentRecyclerList extends AppCompatActivity {
         public void bind(Student st, int position) {
             name.setText(st.name);
             id.setText(st.id);
+            phone.setText(st.phone);
+            address.setText(st.address);
             cb.setChecked(st.cb);
             cb.setTag(position);
         }
