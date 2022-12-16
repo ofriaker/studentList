@@ -24,5 +24,6 @@ public class Model {
 
     public void addStudent(Student st) {
         data.add(st);
+        //notifyAll();
     }
 }
