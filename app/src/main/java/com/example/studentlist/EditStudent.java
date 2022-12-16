@@ -37,6 +37,7 @@ public class EditStudent extends AppCompatActivity {
         String phone = bundle.getString("phone");
         String address = bundle.getString("address");
         Boolean cb = bundle.getBoolean("cb");
+        int pos = bundle.getInt("pos");
 
         nameEt.setText(name);
         idEt.setText(id);
@@ -57,9 +58,10 @@ public class EditStudent extends AppCompatActivity {
             msg.setVisibility(View.VISIBLE);
         });
 
-//        deleteBtn.setOnClickListener(view -> {
-//            Model.instance().deleteStudent(pos);
-//        });
+        deleteBtn.setOnClickListener(view -> {
+            Model.instance().deleteStudent(pos);
+        });
+
         cancelBtn.setOnClickListener(view -> {finish();});
 
 
