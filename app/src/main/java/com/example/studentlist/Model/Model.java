@@ -28,5 +28,10 @@ public class Model {
 
     public void addStudent(Student st) {
         data.add(st);
+        //notifyAll();
+    }
+
+    public void deleteStudent(int pos){
+        data.remove(pos);
     }
 }

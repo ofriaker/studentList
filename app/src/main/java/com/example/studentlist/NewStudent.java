@@ -39,18 +39,11 @@ public class NewStudent extends AppCompatActivity {
 
             Student st = new Student(name, id, phone, address, "", cb);
             Model.instance().addStudent(st);
-
             msg.setVisibility(View.VISIBLE);
-            //maybe fire a saved msg?
+
         });
 
         cancelBtn.setOnClickListener(view -> {finish();});
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Model.instance().getAllStudents();
-
-    }
 }
