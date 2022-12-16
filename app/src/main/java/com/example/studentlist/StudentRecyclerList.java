@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.List;
 
@@ -30,6 +32,9 @@ public class StudentRecyclerList extends AppCompatActivity {
         Button addStudentBtn = findViewById(R.id.studentRL_newStudent);
 
         RecyclerView list = findViewById(R.id.studentRecyclerList_list);
+        for(int i=0; i< data.size(); i++) {
+
+        }
         list.setHasFixedSize(true);
         list.setLayoutManager(new LinearLayoutManager(this));
 
@@ -50,7 +55,6 @@ public class StudentRecyclerList extends AppCompatActivity {
                 intent.putExtra("id", st.id);
                 intent.putExtra("phone", st.phone);
                 intent.putExtra("address", st.address);
-                intent.putExtra("url", st.avatarURL);
                 intent.putExtra("cb", st.cb);
                 startActivity(intent);
             }
@@ -70,6 +74,8 @@ public class StudentRecyclerList extends AppCompatActivity {
             name = itemView.findViewById(R.id.studentListRow_name);
             id = itemView.findViewById(R.id.studentListRow_id);
             cb = itemView.findViewById(R.id.studentListRow_cb);
+
+
             cb.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -111,13 +117,13 @@ public class StudentRecyclerList extends AppCompatActivity {
         @Override
         public StudentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             View view = getLayoutInflater().inflate(R.layout.student_list_row, parent, false);
-
             return new StudentViewHolder(view,listener);
         }
 
         @Override
         public void onBindViewHolder(@NonNull StudentViewHolder holder, int position) {
             Student st = data.get(position);
+            Log.d("tag", "student: " + st.avatarURL);
             holder.bind(st, position);
         }
 

@@ -57,9 +57,9 @@ public class EditStudent extends AppCompatActivity {
             msg.setVisibility(View.VISIBLE);
         });
 
-        deleteBtn.setOnClickListener(view -> {
-            Model.instance().deleteStudent(pos);
-        });
+//        deleteBtn.setOnClickListener(view -> {
+//            Model.instance().deleteStudent(pos);
+//        });
         cancelBtn.setOnClickListener(view -> {finish();});
 
 
