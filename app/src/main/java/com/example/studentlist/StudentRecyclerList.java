@@ -48,6 +48,8 @@ public class StudentRecyclerList extends AppCompatActivity {
                 Student st = data.get(pos);
                 intent.putExtra("name", st.name);
                 intent.putExtra("id", st.id);
+                intent.putExtra("phone", st.phone);
+                intent.putExtra("address", st.address);
                 intent.putExtra("url", st.avatarURL);
                 intent.putExtra("cb", st.cb);
                 startActivity(intent);
