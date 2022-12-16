@@ -26,4 +26,8 @@ public class Model {
         data.add(st);
         //notifyAll();
     }
+
+    public void deleteStudent(int pos){
+        data.remove(pos);
+    }
 }

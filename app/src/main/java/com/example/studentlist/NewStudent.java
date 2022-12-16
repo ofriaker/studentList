@@ -20,6 +20,7 @@ public class NewStudent extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_student);
 
+
         EditText nameEt = findViewById(R.id.newStudent_etName);
         EditText idEt = findViewById(R.id.newStudent_etID);
         EditText phoneEt = findViewById(R.id.newStudent_etPhone);
@@ -45,8 +46,4 @@ public class NewStudent extends AppCompatActivity {
         cancelBtn.setOnClickListener(view -> {finish();});
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-    }
 }
