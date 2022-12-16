@@ -10,8 +10,18 @@
         android:id="@+id/studentRecyclerList_list"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/studentRL_newStudent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/studentRL_newStudent"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="Add New Student"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/studentRecyclerList_list" />
 </androidx.constraintlayout.widget.ConstraintLayout>
