@@ -56,6 +56,7 @@ public class StudentRecyclerList extends AppCompatActivity {
                 intent.putExtra("phone", st.phone);
                 intent.putExtra("address", st.address);
                 intent.putExtra("cb", st.cb);
+                intent.putExtra("pos", pos);
                 startActivity(intent);
             }
         });

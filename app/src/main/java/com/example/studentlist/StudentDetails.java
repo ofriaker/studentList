@@ -25,6 +25,7 @@ public class StudentDetails extends AppCompatActivity {
         String phone = bundle.getString("phone");
         String address = bundle.getString("address");
         Boolean cb = bundle.getBoolean("cb");
+        int pos = bundle.getInt("pos");
 
         TextView nameTv = findViewById(R.id.studentDetails_stName);
         TextView idTv = findViewById(R.id.studentDetails_stID);
@@ -46,6 +47,7 @@ public class StudentDetails extends AppCompatActivity {
             intent.putExtra("phone", phone);
             intent.putExtra("address", address);
             intent.putExtra("cb", cb);
+            intent.putExtra("pos", pos);
             startActivity(intent);
         });
     }
