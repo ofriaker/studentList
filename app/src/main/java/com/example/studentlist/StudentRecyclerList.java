@@ -6,14 +6,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import java.util.List;
 
-import Model.Model;
-import Model.Student;
+import com.example.studentlist.Model.Model;
+import com.example.studentlist.Model.Student;
 
 public class StudentRecyclerList extends AppCompatActivity {
     List<Student> data;
@@ -22,12 +23,21 @@ public class StudentRecyclerList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_recycler_list);
-        data = Model.intance.getAllStudents();
+        data = Model.instance().getAllStudents();
 
         RecyclerView list = findViewById(R.id.studentRecyclerList_list);
         list.setHasFixedSize(true);
         list.setLayoutManager(new LinearLayoutManager(this));
-        list.setAdapter(new StudentRecyclerAdapter());
+
+        StudentRecyclerAdapter adapter = new StudentRecyclerAdapter();
+        list.setAdapter(adapter);
+
+        adapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(int pos) {
+                Log.d("tag" , "Row was clicked " + pos);
+            }
+        });
     }
 
     class StudentViewHolder extends RecyclerView.ViewHolder{
@@ -35,7 +45,7 @@ public class StudentRecyclerList extends AppCompatActivity {
         TextView id;
         CheckBox cb;
 
-        public StudentViewHolder(@NonNull View itemView) {
+        public StudentViewHolder(@NonNull View itemView, OnItemClickListener listener) {
             super(itemView);
             name = itemView.findViewById(R.id.studentListRow_name);
             id = itemView.findViewById(R.id.studentListRow_id);
@@ -48,6 +58,13 @@ public class StudentRecyclerList extends AppCompatActivity {
                     st.cb = cb.isChecked();
                 }
             });
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int pos= getAdapterPosition();
+                    listener.onItemClick(pos);
+                }
+            });
         }
 
         public void bind(Student st, int position) {
@@ -58,14 +75,24 @@ public class StudentRecyclerList extends AppCompatActivity {
         }
     }
 
+    public interface OnItemClickListener {
+        void onItemClick(int pos) ;
+    }
+
     class StudentRecyclerAdapter extends RecyclerView.Adapter<StudentViewHolder> {
+
+        OnItemClickListener listener;
+        void setOnItemClickListener(OnItemClickListener listener) {
+            this.listener = listener;
+        }
+
 
         @NonNull
         @Override
         public StudentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             View view = getLayoutInflater().inflate(R.layout.student_list_row, parent, false);
 
-            return new StudentViewHolder(view);
+            return new StudentViewHolder(view,listener);
         }
 
         @Override
