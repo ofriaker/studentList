@@ -46,37 +46,10 @@
         android:layout_marginStart="8dp"
         android:text="TextView"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/studentListRow_phone"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/studentListRow_cb"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/studentListRow_avatar"
         app:layout_constraintTop_toBottomOf="@+id/studentListRow_name" />
 
-    <TextView
-        android:id="@+id/studentListRow_phone"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="TextView"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/studentListRow_address"
-        app:layout_constraintEnd_toStartOf="@+id/studentListRow_cb"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/studentListRow_avatar"
-        app:layout_constraintTop_toBottomOf="@+id/studentListRow_id"
-        app:layout_constraintVertical_bias="0.508" />
-
-    <TextView
-        android:id="@+id/studentListRow_address"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="TextView"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/studentListRow_cb"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/studentListRow_avatar"
-        app:layout_constraintTop_toBottomOf="@+id/studentListRow_phone"
-        app:layout_constraintVertical_bias="0.932" />
 </androidx.constraintlayout.widget.ConstraintLayout>

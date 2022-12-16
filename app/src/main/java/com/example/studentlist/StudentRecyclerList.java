@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import java.util.List;
@@ -24,6 +26,7 @@ public class StudentRecyclerList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_recycler_list);
         data = Model.instance().getAllStudents();
+        Button addStudentBtn = findViewById(R.id.studentRL_newStudent);
 
         RecyclerView list = findViewById(R.id.studentRecyclerList_list);
         list.setHasFixedSize(true);
@@ -32,6 +35,10 @@ public class StudentRecyclerList extends AppCompatActivity {
         StudentRecyclerAdapter adapter = new StudentRecyclerAdapter();
         list.setAdapter(adapter);
 
+        addStudentBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(StudentRecyclerList.this, NewStudent.class);
+            startActivity(intent);
+        });
         adapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(int pos) {
@@ -39,6 +46,7 @@ public class StudentRecyclerList extends AppCompatActivity {
             }
         });
     }
+
 
     class StudentViewHolder extends RecyclerView.ViewHolder{
         TextView name;
@@ -51,8 +59,6 @@ public class StudentRecyclerList extends AppCompatActivity {
             super(itemView);
             name = itemView.findViewById(R.id.studentListRow_name);
             id = itemView.findViewById(R.id.studentListRow_id);
-            phone = itemView.findViewById(R.id.studentListRow_phone);
-            address = itemView.findViewById(R.id.studentListRow_address);
             cb = itemView.findViewById(R.id.studentListRow_cb);
             cb.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -74,8 +80,6 @@ public class StudentRecyclerList extends AppCompatActivity {
         public void bind(Student st, int position) {
             name.setText(st.name);
             id.setText(st.id);
-            phone.setText(st.phone);
-            address.setText(st.address);
             cb.setChecked(st.cb);
             cb.setTag(position);
         }
